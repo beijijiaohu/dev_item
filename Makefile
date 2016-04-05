@@ -1,6 +1,6 @@
 
 target = code_generater
-objects = main.o
+objects = main.o i2c_dev_item.o
 
 default: clean $(target)
 
@@ -10,7 +10,7 @@ $(target): $(objects)
 
 .PHONY: clean
 clean:
-	@rm $(objects)
+	@rm -f $(objects)
 
 
 

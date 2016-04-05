@@ -1,1 +1,4 @@
 *.o
+cscope.files
+cscope.out
+code_generater
