@@ -53,14 +53,15 @@ BOX("i2c1", "i2c1 board configuration\n"),
         "if 7 bits mode the slave address is range from 0 to 127, contains 0 and 127\n"
         "if 10 bits mode the slave address is range from 0 to 1023, contains 0 and 1023\n"),
   ITEM("single slave address", uint, 0x24, "slave address in single slave address mode"),
+
   BOX("dual slave address",
       "dual slave address if you have the speical needs\n"
       "you'd better do not let the two addrss have the same value"),
    ITEM("slave address 1", uint, 0x24, "the first slave address in dual slave address mode"),
    ITEM("slave address 2", uint, 0x25, "the second slave address in dual slave address mode"),
   BOX_END(),
- CHOICE_END(),
 
+ CHOICE_END(),
 BOX_END(),
 };
 
@@ -74,6 +75,10 @@ void i2c2_dev_config_add(void)
 	int ret;
 
 	ret = dev_config_check_item_tree_valid(&i2c2_dev_config);
+	dev_config_dump(&i2c2_dev_config);
+
+	i2c2_dev_config.tree = dev_tree_create(i2c2_dev_config.items);
+	dev_tree_dump(i2c2_dev_config.tree, 0);
 
 	printf ("i2c config is ok\n");
 }
